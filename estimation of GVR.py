@@ -9,12 +9,6 @@ import random
 # algo = gvr, its or vdn
 algo = "gvr"
 
-# generate the payoff matrix
-th.manual_seed(1534234326)
-matrix = th.randint(-20,7,(3,3,3,3)).float()
-matrix[0,0,0,0] = 8.0
-matrix[n_actions-1,n_actions-1,n_actions-1,n_actions-1] = 6
-
 # agent
 class Q_mat(nn.Module):
     def __init__(self, mat_size):
@@ -73,6 +67,12 @@ alpha = 0.1
 
 n_actions = 3
 n_agents = 4
+
+# generate the payoff matrix
+th.manual_seed(1534234326)
+matrix = th.randint(-20,7,(3,3,3,3)).float()
+matrix[0,0,0,0] = 8.0
+matrix[n_actions-1,n_actions-1,n_actions-1,n_actions-1] = 6
 
 for ep_times in range(100):
     epsl = ep_times / 100 + 0.9
